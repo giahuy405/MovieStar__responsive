@@ -1,0 +1,491 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+::selection{
+    background-color: #ec7532;
+    color: white;
+}
+.line::after{
+    content: "";
+    display: block;
+    width: 0%;
+    height: 3px;
+    background-image: linear-gradient(to right, #fbbd61, #ec7532);
+    transition: .5s;
+}
+.line:hover::after,.line.active::after{
+    width: 100%;
+}
+.title{
+    color: #ec7532;
+    font-size: 22px;
+    border-bottom: 1px solid rgb(215, 215, 215);
+}
+.title::after{
+    display: block;
+    content: '';
+    width: 130px;
+    height: 3px;
+    background-image: linear-gradient(to right, #fbbd61, #ec7532);
+    margin-top: 15px;
+}
+.section{
+    padding: 75px 0;
+}
+
+
+
+
+
+
+header{
+    position: absolute;
+    width: 100%;
+    top: 20px;
+    /* khai báo z index cho cả 2 header */
+    z-index: 999;
+}
+header p{
+    font-size: 14px;
+    color: white;
+}
+#navbarMovie .line .nav-link{
+    padding: 15px 27px;   
+    font-size: 18px;
+    color: white;
+}
+
+#navbarMovie .line{
+    border-bottom: 1px solid rgba(255, 255, 255, 0.195);
+}
+/* header Fixed */
+#headerFixed{
+    position: fixed;
+    top: -30px;
+    /* căn giữa cho header */
+    left: 50%;
+    transform: translate(-50%,-100%);
+
+    background-color: black;
+    transition: all .5s;
+}
+   
+
+/* carousel */
+#carouselMovie{
+    height: 650px;
+}
+#carouselMovie .carousel-inner{
+    height: 100%;
+}
+#carouselMovie .carousel-item{
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+}
+#carouselMovie .carousel-item:nth-child(1){
+    background-image: url(../img/hero-1.jpg);
+}
+#carouselMovie .carousel-item:nth-child(2){
+    background-image: url(../img/hero-2.jpg);
+}
+#carouselMovie .carousel-item:nth-child(3){
+    background-image: url(../img/hero-3.jpg);
+}
+#carouselMovie .carousel-item::after{
+    content:'';
+    width: 100%;
+    height: 100%;
+    display: block;
+    background-image:linear-gradient(to top, rgb(0, 0, 0), rgba(10, 10, 10, 0.257));
+}
+#carouselMovie .carousel-caption{
+    text-align: left;
+     top: 55%;
+     left: 50%;
+     transform: translate(-50%,-50%);
+}
+#carouselMovie .carousel-caption h4{
+    color: #fbbd61;
+    font-size: 14px;
+    letter-spacing: 2px ;
+}
+#carouselMovie .carousel-caption p{
+    font-size: 18px;
+}
+#carouselMovie .carousel-caption span{
+    font-size: 14px;
+    border: 2px solid white;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    line-height: 48px;
+    display: inline-block;
+    border-radius: 50%;
+}
+#carouselMovie .carousel-caption button{
+    padding: 10px 24px;
+    border-radius: 25px;
+    border: none;
+    margin-left: 10px;
+    font-size: 16px;
+    letter-spacing: 2px;
+    background-image: linear-gradient(to right, #fbbd61, #ec7532 );
+    color: white;
+   
+    position: relative;
+    overflow: hidden;
+    z-index: 2;
+}
+#carouselMovie .carousel-caption button::after{
+    content: "";
+    width: 110%;
+    height: 110%;
+    background-color: #ec7532;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    transform: skewX(25deg) translateX(-100%) ;
+    transition:  .5s;
+}
+#carouselMovie .carousel-caption button:hover::after{
+    transform: skewX(25deg) translateX(0) ;
+}
+.carousel-indicators li{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid white;
+    background-clip: unset;
+    background-color: transparent;
+    opacity: 1;
+
+}
+.carousel-indicators .active{
+    background-color: white;
+}
+.carousel-indicators{
+    margin: 0;
+    bottom: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    justify-content: start;
+    padding: 0 15px;
+}
+
+/* ============New=========== */
+.new__cards{
+    margin-top:40px;
+}
+/* lớp 1 : img */
+.new__pic{
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+/* lớp 2: background gradient */
+.new__pic::after{
+    content: '';
+    width: 200%;
+    height: 130%;
+    top: 0;
+    left: 0;
+    background-image: linear-gradient(to bottom, #fbbd61, #ec7532);
+    position: absolute;
+    z-index: 2;
+    transform: skew(30deg) translateX(-130%);
+    transition: all .5s;
+    opacity: 0.9;
+}
+.new__card:hover .new__pic::after{
+    transform: skew(30deg) translateX(-25%);
+}
+/* lớp 3 caption */
+.new__overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    color: white;
+    z-index: 3;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: all .5s;
+}
+.new__card:hover .new__overlay{
+    opacity: 1;
+}
+.new__overlay a{
+    font-size: 20px;
+    width: 80px;
+    height: 80px;
+    border: 2px solid white;
+    border-radius: 50%;
+    line-height: 80px;
+    display: inline-block;
+    color: white;
+    transition: all .5s;
+}
+/* scale thu nhỏ icon Play lại */
+.new__overlay a:hover{
+    transform: scale(0.9);
+}
+.new__overlay h3{
+    font-size: 20px;
+    margin-top: 20px;
+}
+.new__star i{
+    font-size: 15px;
+    color: rgb(255, 174, 0);
+}
+.new__star h4{
+   font-weight: 400;
+   font-size: 20px;
+}
+
+
+/* =============showtime ===================*/
+.nav-tabs .nav-link:focus, .nav-tabs .nav-link:hover{
+    border: none;
+ 
+}
+.showtime .nav-tabs .nav-link span {
+    padding: 15px 15px;
+    display: block;
+}
+.showtime .nav-tabs .nav-link{
+    padding: 0;
+    border: none;
+    color: black;
+    transition: all .5s;
+}
+.showtime .nav-tabs .nav-item.show .nav-link,.showtime .nav-tabs .nav-link.active,.showtime .nav-tabs .nav-link:hover{
+    border: none;
+    color: #ec7532;
+}
+.showtimes__title{
+    font-size: 14px;
+    color: #ec7532;
+    margin: 0;
+}
+#myTabContent img{
+    border-radius: 10px;
+}
+.tabRow h3{
+    font-size: 25px;
+    font-weight:400;
+}
+.tabRow p:nth-of-type(3) a{
+    text-decoration: none;
+    font-size: 14px;
+    color: #ec7532;
+    letter-spacing: 2px;
+}
+.showtimes__viewing span{
+    font-size: 14px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+.showtimes__viewing button{
+    padding: 4px 10px;
+    background-color: rgb(219, 219, 219);
+    font-size: 14px;
+}
+.showtimes__runingTime span:last-child{
+    display: inline-block;
+    background-color: #4a4a4a;
+    font-size: 12px;
+    width:30px;
+    height:30px;
+    line-height: 30px;
+    text-align: center;
+    color: white;
+    border-radius: 50%;
+}
+
+/*=============== ComingSoon================ */
+.comingsoon{
+    /* chèn cả màu và image vào background */
+    background: rgb(14, 14, 14) url(../img/slide-3.png);
+    background-size: cover;
+    color: white;
+}
+.comingsoon .title{
+    border-bottom: 1px solid rgb(49, 49, 49);
+}
+.comingsoon__title{
+    color: #ec7532;
+    font-size: 14px;
+    margin: 0;
+}
+.comingsoon__star i{
+    color: #fbbd61;
+}
+.comingsoon__star i:last-child{
+    color: white;
+}
+.comingsoon__moreinfo{
+    font-size: 14px;
+    color: #ec7532;
+    text-decoration: none;
+    transition: all .5s;
+    letter-spacing: 2px;
+}
+.comingsoon__moreinfo:hover{
+    color: #fbbd61;
+    text-decoration: none;
+}
+.comingsoon__video{
+    position: relative;
+}
+.comingsoon__video i{
+    font-size: 25px;
+    width: 80px;
+    height: 80px;
+    text-align: center;
+    line-height: 80px;
+    border-radius: 50%;
+    border: 2px solid #ec7532;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    transition: all .5s;
+}
+.comingsoon__video:hover i{
+    /* để theo thứ tự translate để nó căn giữa icon Play trước rồi sau đó mới scale cho nó nhỏ lại  */
+    transform:  translate(-50%,-50%) scale(0.9);
+    
+}
+/* căn giữa video và thu nhỏ nó lại */
+.vbox-content{
+    width: 80%;
+    margin: 0 auto;
+}
+.vbox-close{
+    padding: 15px 35px;
+    font-size: 30px;
+}
+
+/* ===========MOVIE LIST============ */
+.movieList{
+    background-color: #1f1f1f;
+}
+.movieList__overlay{
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+}
+
+.movieList__overlay::after{
+    content: '';
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.747);
+    z-index: 5;
+    transition: all .5s;
+}
+.movieList__overlay:hover::after{
+    background-color: transparent
+}
+
+/* ========CONTACT========= */
+.contact p{
+    font-size: 20px;
+    
+}
+.contact h3{
+    font-size: 40px;
+    color: #ec7532;
+}
+/* FOOTER */
+footer{
+    background-color: #1f1f1f;
+    color: #ec7532;
+}
+footer h4{
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+footer p{
+    margin-bottom: 5px;
+}
+footer a{
+    color: white;
+    transition: all .5s;
+    font-size: 15px;
+}
+
+footer a:hover{
+    color:  #ec7532;
+    text-decoration: none;
+}
+
+
+
+/* COPY RIGHT */
+.copyright{
+    background-color: #1f1f1f;
+    color: white;
+
+}
+.copyright p{
+    border-top: 1px solid rgb(73, 73, 73);
+}
+
+
+
+
+@media screen and (max-width:119.98px) {
+    
+}
+@media screen and (max-width:991.98px) {
+    #navbarMovie .line .nav-link{
+        padding: 15px;
+    }
+}
+@media screen and (max-width:761.98px) {
+     .navbar button i{
+        color: #fbbd61;
+        font-size: 25px;
+    }
+    .navbarMovie .navbar-nav{
+        text-align: center;
+        background-color: black;
+        opacity: .9;
+    }
+    .navbar-brand img{
+        width: 180px;
+    }
+    .carousel-indicators{
+        bottom: 10%;
+    }
+    #carouselMovie .carousel-caption h5{
+        font-size: 35px;
+    }
+    #carouselMovie .carousel-caption p{
+        font-size: 16px;
+    }
+    .vbox-content{
+        width: 100%;
+        margin: 0 auto;
+    }
+    .vbox-close{
+        padding: 15px 35px;
+        font-size:25px;
+    }
+}
+@media screen and (max-width:575.98px) {
+    
+}
